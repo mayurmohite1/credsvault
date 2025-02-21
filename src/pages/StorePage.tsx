@@ -157,7 +157,10 @@ const StorePage: React.FC = () => {
         </div>
         <div className="flex space-x-6">
           {!walletAddress ? (
-            <appkit-button onClick={connectWallet} />
+            <div>
+              {/* @ts-expect-error msg */}
+              <appkit-button onClick={connectWallet} />
+            </div>
           ) : (
             <div className="flex items-center space-x-2 bg-gray-800/50 backdrop-blur-lg px-4 py-2 rounded-lg border border-gray-700/50">
               <KeyRound className="h-4 w-4 text-emerald-400" />
