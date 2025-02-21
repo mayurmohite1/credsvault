@@ -57,7 +57,7 @@ const Landing: React.FC = () => {
       <main className="container mx-auto px-6 py-20 relative">
         <div className="text-center max-w-3xl mx-auto animate-fade-in-up">
           <h1 className="text-6xl font-bold mb-6 bg-gradient-to-r from-emerald-400 via-cyan-400 to-purple-400 bg-clip-text text-transparent font-lexend">
-            Next-Generation Credential Security on the Blockchain
+            Next-Generation Credentials Security on the Blockchain
           </h1>
           <p className="text-xl text-gray-300 mb-12 animate-fade-in">
             Experience unprecedented security for your sensitive credentials
