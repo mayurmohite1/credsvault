@@ -1,7 +1,7 @@
 
 # Project's Title
 
-                    CredsVault A Blockchain Solution To Store Credentials📝🙈
+                                          CredsVault A Blockchain Solution To Store Credentials📝🙈
 
 
 
