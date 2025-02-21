@@ -1,24 +1,7 @@
-// import { RouterProvider } from "react-router-dom";
-// import { router } from "./routes";
-
-// const App: React.FC = () => {
-//   return (
-//     <>
-
-//         <RouterProvider router={router} />
-//     </>
-//   );
-// };
-
-// export default App;
-
 import { RouterProvider } from "react-router-dom";
 import { router } from "./routes";
-
 import { createAppKit } from "@reown/appkit/react";
-
 import { WagmiProvider } from "wagmi";
-
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import {
   projectId as rawProjectId,
@@ -27,17 +10,13 @@ import {
   wagmiAdapter,
 } from "./config";
 
-const projectId = rawProjectId || "defaultProjectId"; // Replace "defaultProjectId" with a valid default value
-
+const projectId = rawProjectId || "defaultProjectId";
 const queryClient = new QueryClient();
-
 const generalConfig = {
   projectId,
   metadata,
   networks,
 };
-
-// Create modal
 createAppKit({
   adapters: [wagmiAdapter],
   ...generalConfig,

@@ -5,6 +5,9 @@ module.exports = {
       scale: {
         102: "1.02",
       },
+      fontFamily: {
+
+      },
       animation: {
         "fade-in": "fade-in 1.5s ease-out",
         "fade-in-up": "fade-in-up 0.5s ease-out",

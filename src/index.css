@@ -1,1 +1,16 @@
+@font-face {
+  font-family: 'LexendExa';
+  src: url('../src/assets/fonts/LexendExa-SemiBold.ttf') format('truetype');
+}
+
 @import "tailwindcss";
+
+@theme{
+    --font-lexend:  LexendExa,"sans-serif";
+}
+@layer utilities {
+      /* Hide scrollbar for Chrome, Safari and Opera */
+      .no-scrollbar::-webkit-scrollbar {
+          display: none;
+      }
+    }
