@@ -142,8 +142,9 @@ const Read: React.FC = () => {
           </span>
         </div>
         <div className="flex space-x-6">
+          {/* @ts-expect-error msg */}
           {!walletAddress ? (
-            <appkit-button onClick={connectWallet} />
+            <ppkit-button onClick={connectWallet} />
           ) : (
             <div className="flex items-center space-x-2 bg-gray-800/50 backdrop-blur-lg px-4 py-2 rounded-lg border border-gray-700/50">
               <KeyRound className="h-4 w-4 text-emerald-400" />
