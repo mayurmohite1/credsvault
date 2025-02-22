@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { ethers } from "ethers";
-import { FileLock2, KeyRound, Edit2, Trash2, Save } from "lucide-react";
+import { FileLock2, KeyRound, Edit2, Save } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { contractABI, contractAddress } from "./contractConfig";
 
@@ -42,7 +42,7 @@ const Read: React.FC = () => {
     initWallet();
   }, []);
 
-  const fetchNotes = async () => {
+  const fetchNotes = useCallback(async () => {
     if (!contract) return alert("Please connect your wallet first!");
     setIsLoading(true);
 
@@ -64,11 +64,11 @@ const Read: React.FC = () => {
     } finally {
       setIsLoading(false);
     }
-  };
+  }, [contract]);
 
-  const handleDelete = (id: number) => {
-    setNotes((prev) => prev.filter((note) => note.id !== id));
-  };
+  useEffect(() => {
+    if (walletAddress) fetchNotes();
+  }, [walletAddress, fetchNotes]);
 
   const startEdit = (note: Note) => {
     setIsEditing(note.id);
@@ -210,24 +210,14 @@ const Read: React.FC = () => {
                         <p className="text-gray-500 text-sm">
                           {new Date(note.timestamp).toLocaleString()}
                         </p>
-                        <div className="flex space-x-3">
-                          <button
-                            onClick={() => startEdit(note)}
-                            className="flex items-center space-x-2 bg-gray-700/50 px-3 py-1 rounded-lg
-                            transition-all duration-300 hover:bg-gray-600/50"
-                          >
-                            <Edit2 className="h-4 w-4 text-emerald-400" />
-                            <span className="text-emerald-400">Edit</span>
-                          </button>
-                          <button
-                            onClick={() => handleDelete(note.id)}
-                            className="flex items-center space-x-2 bg-red-500/20 px-3 py-1 rounded-lg
-                            transition-all duration-300 hover:bg-red-500/30"
-                          >
-                            <Trash2 className="h-4 w-4 text-red-400" />
-                            <span className="text-emerald-400">Delete</span>
-                          </button>
-                        </div>
+                        <button
+                          onClick={() => startEdit(note)}
+                          className="flex items-center space-x-2 bg-gray-700/50 px-3 py-1 rounded-lg
+                          transition-all duration-300 hover:bg-gray-600/50"
+                        >
+                          <Edit2 className="h-4 w-4 text-emerald-400" />
+                          <span className="text-emerald-400">Edit</span>
+                        </button>
                       </div>
                     </>
                   )}
